@@ -1,3 +1,4 @@
+
 from bs4 import BeautifulSoup
 from datetime import datetime
 from new import New
@@ -10,24 +11,25 @@ import re
 # Create your views here.
 def main():
 
-    gob() # Tiene errores
+    # gob() # Tiene errores
+
     # intendenciaValparaiso()
     # seremiSalud()
-    # seremiMedioAmbiente()
+    # seremiMedioAmbiente() # Tiene errores
     # seremiCultura()
     # seremiEducacion()
-    # elMatutino()
+    # elMatutino() # Tiene errores
     # radioValparaiso()
     # elInformador()
     # soyChileValparaiso()
     # soyChileQuillota()
     # municipalidadQuilpue()
 
-    municipalidadValparaiso()
-    daem()
-    municipalidadSanFelipe()
-    municipalidadQuillota()
-    upla()
+    # municipalidadValparaiso()
+    # daem()
+    # municipalidadSanFelipe()
+    # municipalidadQuillota()
+    # upla()
 
 def getUrl(url, ssl=True):
     try:

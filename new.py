@@ -1,3 +1,4 @@
+
 import mysql.connector
 from mysql.connector import Error
 from datetime import datetime
@@ -9,7 +10,7 @@ class New:
         self._url_news = None
         self._title = None
         self._lead = ""
-        self._category = 'sin categoría'
+        self._category = 'sin categoria'
         self._url_new = None
         self._date = None
         self._img = None
@@ -18,17 +19,23 @@ class New:
 
     def saveNew(self):
         try:
-            connection = mysql.connector.connect(host='localhost', database='simone', user='root', password='')
+            db = 'simone'
+            user = 'root'
+            password = ''
+
+            table = 'sm_scraper' # wp_scraper
+
+            connection = mysql.connector.connect(host='localhost', database=db, user=user, password=password)
             cursor = connection.cursor(buffered=True)
 
             # Check if exist the record
-            mysql_check_query = """SELECT title, COUNT(*) FROM wp_scraper WHERE title = %s AND institution = %s GROUP BY title"""
+            mysql_check_query = """SELECT title, COUNT(*) FROM """ + table + """ WHERE title = %s AND institution = %s GROUP BY title"""
             record = (self._title, self._institution)
             cursor.execute(mysql_check_query, record)
             row_count = cursor.rowcount
 
             if row_count == 0:
-                mysql_insert_query = """INSERT INTO wp_scraper 
+                mysql_insert_query = """INSERT INTO """ + table + """ 
                                         (institution, url_base, url_news, url_new, title, lead, category, date, img, body, body_full) 
                                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) """
                 recordTuple = (self._institution, self._url_base, self._url_news, self._url_new, self._title, self._lead, self._category, self._date, self._img, self._body, self._body_full)
@@ -44,19 +51,20 @@ class New:
                 connection.close()
         
         # print("institution")
-        # print( self._institution)
+        print( self._institution)
         # print("url_base")
         # print( self._url_base)
         # print("url_news")
         # print( self._url_news)
-        # print("title")
-        # print( self._title)
+        
         # print("lead")
         # print( self._lead)
         # print("category")
         # print( self._category)
         # print("url_new")
         print( self._url_new)
+        # print("title")
+        # print(self._title)
         # print("date")
         # print( self._date)
         # print("img")
