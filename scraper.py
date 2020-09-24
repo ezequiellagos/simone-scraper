@@ -13,7 +13,7 @@ def main():
 
     # gob() # Tiene errores
 
-    # intendenciaValparaiso()
+    intendenciaValparaiso()
     # seremiSalud()
     # seremiMedioAmbiente() # Tiene errores
     # seremiCultura()
@@ -31,6 +31,8 @@ def main():
     # municipalidadQuillota()
     # upla()
 
+
+# Function
 def getUrl(url, ssl=True):
     try:
         headers = requests.utils.default_headers()
